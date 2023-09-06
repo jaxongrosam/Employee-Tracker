@@ -9,7 +9,7 @@ function init() {
 }
 
 async function menu() {
-  const answer = await inquirer.createPromptModule([
+  const questions = await inquirer.prompt([
     {
       type: "list",
       name: "menu",
@@ -33,4 +33,67 @@ async function menu() {
       ],
     },
   ]);
+
+  switch (questions.menu) {
+    case "View all employees":
+      findAllEmployees();
+      break;
+
+    case "View all roles":
+      findAllRoles();
+      break;
+
+    case "View all departments":
+      findAllDepartments();
+      break;
+
+    case "Add employee":
+      createEmployee();
+      break;
+
+    case "Add role":
+      createRole();
+      break;
+
+    case "Add department":
+      createDepartment();
+      break;
+
+    case "Update employee role":
+      updateEmployeeRole();
+      break;
+
+    case "Update an employee manager":
+      updateManager();
+      break;
+
+    case "View employees by mangaer":
+      findEmployeesByManager();
+      break;
+
+    case "View employees by department":
+      findEmployeesByDepartment();
+      break;
+
+    case "Delete an employee":
+      removeEmployee();
+      break;
+
+    case "Delete a role":
+      removeRole();
+      break;
+
+    case "Delete a department":
+      removeDepartment();
+      break;
+
+    case "View budget":
+      viewDepartmentBudgets();
+      break;
+
+    case "Quit":
+      process.exit(0);
+  }
 }
+
+menu();
