@@ -24,9 +24,21 @@ class DB {
   }
   // Function to create a new employee
   createEmployee(employee) {
+    console.log(employee);
+    employee = {
+      first_name: "JOHN",
+      last_name: "DOE",
+      role_id: 5,
+      manager_id: 1,
+    };
     return this.connection
       .promise()
-      .query("INSERT INTO employee SET ?", employee);
+      .query("INSERT INTO employee VALUES (NULL, ?, ?, ?, ?)", [
+        employee.first_name,
+        employee.last_name,
+        employee.role_id,
+        employee.manager_id,
+      ]);
   }
   // Function to remove a specific employee based on ID
   removeEmployee(employeeId) {

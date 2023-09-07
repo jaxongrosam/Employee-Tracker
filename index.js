@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const db = require("./db");
+const db = require("./db/");
 const logo = require("asciiart-logo");
 
 init();
@@ -12,83 +12,83 @@ async function menu() {
   const questions = await inquirer.prompt([
     {
       type: "list",
-      name: "menu",
+      name: "choice",
       message: "What would you like to do?",
       choices: [
-        "View all employees",
-        "View all roles",
-        "View all departments",
-        "Add employee",
-        "Add role",
-        "Add department",
-        "Update employee role",
-        "Update an employee manager",
-        "View employees by manager",
-        "View employees by department",
-        "Delete an employee",
-        "Delete a role",
-        "Delete a department",
-        "View budget",
+        "View All Employees",
+        "View All Roles",
+        "View All Departments",
+        "Add Employee",
+        "Add Role",
+        "Add Department",
+        "Update Employee Role",
+        "Update An Employee Manager",
+        "View Employees By Manager",
+        "View Employees By Department",
+        "Delete An Employee",
+        "Delete A Role",
+        "Delete A Department",
+        "View Budget",
         "Quit",
       ],
     },
   ]);
 
-  switch (questions.menu) {
-    case "View all employees":
-      findAllEmployees();
+  switch (questions.choice) {
+    case "View All Employees":
+      db.findAllEmployees();
       break;
 
-    case "View all roles":
-      findAllRoles();
+    case "View All Roles":
+      db.findAllRoles();
       break;
 
-    case "View all departments":
-      findAllDepartments();
+    case "View All Departments":
+      db.findAllDepartments();
       break;
 
-    case "Add employee":
-      createEmployee();
+    case "Add Employee":
+      db.createEmployee();
       break;
 
-    case "Add role":
-      createRole();
+    case "Add Role":
+      db.createRole();
       break;
 
-    case "Add department":
-      createDepartment();
+    case "Add Department":
+      db.createDepartment();
       break;
 
-    case "Update employee role":
-      updateEmployeeRole();
+    case "Update Employee Role":
+      db.updateEmployeeRole();
       break;
 
-    case "Update an employee manager":
-      updateManager();
+    case "Update An Employee Manager":
+      db.updateManager();
       break;
 
-    case "View employees by mangaer":
-      findEmployeesByManager();
+    case "View Employees By Mangaer":
+      db.findEmployeesByManager();
       break;
 
-    case "View employees by department":
-      findEmployeesByDepartment();
+    case "View Employees By Department":
+      db.findEmployeesByDepartment();
       break;
 
-    case "Delete an employee":
-      removeEmployee();
+    case "Delete An Employee":
+      db.removeEmployee();
       break;
 
-    case "Delete a role":
-      removeRole();
+    case "Delete A Role":
+      db.removeRole();
       break;
 
-    case "Delete a department":
-      removeDepartment();
+    case "Delete A Department":
+      db.removeDepartment();
       break;
 
-    case "View budget":
-      viewDepartmentBudgets();
+    case "View Budget":
+      db.viewDepartmentBudgets();
       break;
 
     case "Quit":
